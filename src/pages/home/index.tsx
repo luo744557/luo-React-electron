@@ -1,49 +1,16 @@
 import React, { useState } from 'react';
-import { Button, Card } from 'antd';
-import JSONEditor from '../../component/json-editor';
+import { Button, Row, Col, Input, Select } from 'antd';
+import './index.less';
 
-const Welcome = () => {
+const { TextArea } = Input;
+const Home = () => {
   // const { initialState } = useModel('@@initialState');
-  const [mode, setMode] = useState('tree');
-  const [text, setText] = useState({});
-  const json = {
-    'array': [1, 2, 3],
-    'boolean': true,
-    'null': null,
-    'number': 'four',
-    'object': {'a': 'b', 'c': 'd'},
-    'string': 'Hello World'
-  };
-
-  const modes: Array<string> = ['tree', 'form', 'view', 'code', 'text'];
-
-  const onModeChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setMode(e.target.value);
-  };
-
-  const onChangeText = () => {
-    setText(json);
-  };
 
   return (
-    <Card
-      style={{
-        borderRadius: 8,
-      }}
-    >
-      <div className="contents">
-        <Button onClick={onChangeText}>change text</Button>
-        <div className="mode">
-          mode: <select aria-label="select mode" value={mode} onChange={onModeChangeSelect}>
-            {
-              modes.map(mode => <option key={mode} value={mode}>{mode}</option>)
-            }
-          </select>
-        </div>
-        <JSONEditor value={text} onChange={onChangeText} />
-      </div>
-    </Card>
+    <div className="home">
+      首页内容
+    </div>
   );
 };
 
-export default Welcome;
+export default Home;

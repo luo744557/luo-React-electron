@@ -42,7 +42,7 @@ const JSONEditor = (props: Props) => {
   }, [value]);
   
   return (
-    <div className="jsoneditor-react-container" ref={container}>
+    <div id="jsoneditor" className="jsoneditor-react-container" ref={container}>
     </div>
   )
 }

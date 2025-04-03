@@ -1,14 +1,48 @@
-// .app {
-//   text-align: center;
-//   background-color: red;
-//   .app-menu {
-//     color: #61dafb;
-//   }
-// }
-:local(.app) {
-  text-align: center;
-  background-color: red;
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f3f3;
+  .ant-layout-sider {
+    width: 200px;
+  }
+  .ant-layout-header {
+    padding-right: 24px;
+    .ant-menu {
+      flex: 1;
+    }
+  }
+  
   .app-menu {
-    color: #61dafb;
+    width: 256px;
+    height: 100vh;
+    background-color: #ffffff;
+  }
+
+  .slider-collapsed-btn {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+  }
+  .demo-logo {
+    margin: 0 16px 0 0;
+    width: 200px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    width: 100px;
+
+    &-name {
+      margin-right: 6px;
+      color: #fff;
+    }
+
+    .ant-avatar-image {
+      border: 1px solid #fff;
+    }
   }
 }
