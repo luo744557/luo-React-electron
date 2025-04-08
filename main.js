@@ -1,8 +1,9 @@
 // 导入app、BrowserWindow模块
 // app 控制应用程序的事件生命周期。事件调用app.on('eventName', callback)，方法调用app.functionName(arg)
 // BrowserWindow 创建和控制浏览器窗口。new BrowserWindow([options]) 事件和方法调用同app
+// BaseWindow
 // Electron参考文档 https://www.electronjs.org/docs
-const {app, BrowserWindow, nativeImage } = require('electron')
+const {app, screen, BrowserWindow, nativeImage } = require('electron')
 const path = require('path')
 const remote = require("@electron/remote/main")
 remote.initialize()
@@ -11,10 +12,12 @@ remote.initialize()
  
 function createWindow () {
     require('./menu.js')
+    const primaryDisplay = screen.getPrimaryDisplay()
+    const { width, height } = primaryDisplay.workAreaSize
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 800, // 窗口宽度
-        height: 600,  // 窗口高度
+        width: width, // 窗口宽度
+        height: height,  // 窗口高度
         // title: "Electron app", // 窗口标题,如果由loadURL()加载的HTML文件中含有标签<title>，该属性可忽略
         icon: nativeImage.createFromPath('public/favicon.ico'), // "string" || nativeImage.createFromPath('public/favicon.ico')从位于 path 的文件创建新的 NativeImage 实例
         webPreferences: { // 网页功能设置
@@ -40,7 +43,7 @@ function createWindow () {
     // 因为我们是加载的react生成的页面，并不是静态页面
     // 所以loadFile换成loadURL。
     // 加载应用 --开发阶段  需要运行 yarn start
-    mainWindow.loadURL('http://localhost:3000');
+    mainWindow.loadURL('http://localhost:8000');
  
     // 解决应用启动白屏问题
     mainWindow.on('ready-to-show', () => {
